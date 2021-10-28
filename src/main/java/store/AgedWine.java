@@ -5,8 +5,8 @@ package store;
  */
 public class AgedWine extends Item {
 
-    public AgedWine(String name, int sellIn, int value) {
-        super(name, sellIn, value);
+    public AgedWine(Item i) {
+        super(i);
     }
 
     @Override

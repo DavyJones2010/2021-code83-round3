@@ -5,11 +5,8 @@ package store;
  */
 public class ShowTicket extends Item {
 
-    public ShowTicket(String name, int sellIn, int value) {
-        super(name, sellIn, value);
-        if (isExpire()) {
-            this.value = MIN_VALUE;
-        }
+    public ShowTicket(Item i) {
+        super(i);
     }
 
     @Override
@@ -17,14 +14,11 @@ public class ShowTicket extends Item {
         this.sellIn--;
         if (outOfTenDays()) {
             this.value += 1;
-        }
-        if (inTenDays()) {
+        } else if (inTenDays()) {
             this.value += 2;
-        }
-        if (inFiveDays()) {
+        } else if (inFiveDays()) {
             this.value += 3;
-        }
-        if (isExpire()) {
+        } else {
             this.value = MIN_VALUE;
         }
         formatValue();
@@ -36,7 +30,7 @@ public class ShowTicket extends Item {
      * @return
      */
     public boolean outOfTenDays() {
-        return this.sellIn > 10;
+        return this.sellIn >= 10;
     }
 
     /**
@@ -45,7 +39,7 @@ public class ShowTicket extends Item {
      * @return
      */
     public boolean inTenDays() {
-        return this.sellIn > 5 && this.sellIn <= 10;
+        return this.sellIn >= 5 && this.sellIn < 10;
     }
 
     /**
@@ -54,6 +48,6 @@ public class ShowTicket extends Item {
      * @return
      */
     public boolean inFiveDays() {
-        return this.sellIn > 0 && this.sellIn <= 5;
+        return this.sellIn >= 0 && this.sellIn < 5;
     }
 }

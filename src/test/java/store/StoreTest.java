@@ -64,6 +64,8 @@ public class StoreTest {
         Store s = new Store(new Item[]{i, i2});
         Store2 s2 = new Store2(new Item[]{new Item("Show Ticket", 1, 0), new Item("Show Ticket", 11, 0)});
         System.out.println(s.items[0] + "\t" + s2.items[0]);
+        System.out.println(s.items[1] + "\t" + s2.items[1]);
+        System.out.println("----------------------------------");
         for (int j = 0; j < 40; j++) {
             s.updateValue();
             s2.updateValue();

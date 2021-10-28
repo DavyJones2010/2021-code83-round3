@@ -15,15 +15,15 @@ public class ItemFactory {
         ItemType itemType = ItemType.parse(item.name);
         switch (itemType) {
             case AGED_WINE:
-                return new AgedWine(item.name, item.sellIn, item.value);
+                return new AgedWine(item);
             case SHOW_TICKET:
-                return new ShowTicket(item.name, item.sellIn, item.value);
+                return new ShowTicket(item);
             case SULFURAS:
-                return new Sulfuras(item.name, item.sellIn, item.value);
+                return new Sulfuras(item);
             case CURE:
-                return new Cure(item.name, item.sellIn, item.value);
+                return new Cure(item);
             default:
-                return new Item(item.name, item.sellIn, item.value);
+                return item;
         }
     }
 }

@@ -4,8 +4,8 @@ package store;
  * @author davywalker
  */
 public class Cure extends Item {
-    public Cure(String name, int sellIn, int value) {
-        super(name, sellIn, value);
+    public Cure(Item i) {
+        super(i);
     }
 
     @Override
