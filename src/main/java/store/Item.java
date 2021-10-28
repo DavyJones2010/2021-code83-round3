@@ -1,15 +1,16 @@
 package store;
 
-// Please don't modify the class name.
-public class Item {
-
+/**
+ * @author davywalker
+ */
+public class Item implements Updatable {
     public String name;
-
     public int sellIn;
-
     public int value;
 
-    // Please don't modify the signature of this method.
+    public static final Integer MIN_VALUE = 0;
+    public static final Integer MAX_VALUE = 50;
+
     public Item(String name, int sellIn, int value) {
         this.name = name;
         this.value = value;
@@ -17,16 +18,16 @@ public class Item {
         formatValue();
     }
 
-    // Please don't modify the signature of this method.
+    @Override
     public String toString() {
         return this.name + ", " + this.sellIn + ", " + this.value;
     }
 
+    @Override
     public void updateValue() {
         this.sellIn--;
         this.value--;
-        // 这里待验证, 是<0, 还是<=0?
-        if (this.sellIn <= 0) {
+        if (isExpire()) {
             // 双倍下滑
             this.value--;
         }
@@ -34,10 +35,19 @@ public class Item {
     }
 
     public void formatValue() {
-        if (this.value <= 0) {
-            this.value = 0;
-        } else if (this.value >= 50) {
-            this.value = 50;
+        if (this.value <= MIN_VALUE) {
+            this.value = MIN_VALUE;
+        } else if (this.value >= MAX_VALUE) {
+            this.value = MAX_VALUE;
         }
+    }
+
+    /**
+     * 是否已经失效, 这里待验证, 是<0, 还是<=0?
+     *
+     * @return
+     */
+    public boolean isExpire() {
+        return sellIn <= 0;
     }
 }

@@ -1,5 +1,8 @@
 package store;
 
+/**
+ * @author davywalker
+ */
 public class Sulfuras extends Item {
 
     public Sulfuras(String name, int sellIn, int value) {
@@ -8,7 +11,5 @@ public class Sulfuras extends Item {
 
     @Override
     public void updateValue() {
-        // do nothing
-        formatValue();
     }
 }
