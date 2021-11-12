@@ -11,12 +11,6 @@ public class Item implements Updatable {
     public static final Integer MIN_VALUE = 0;
     public static final Integer MAX_VALUE = 50;
 
-    public Item(Item i) {
-        this.name = i.name;
-        this.sellIn = i.sellIn;
-        this.value = i.value;
-    }
-
     public Item(String name, int sellIn, int value) {
         this.name = name;
         this.value = value;

@@ -4,24 +4,26 @@ package store;
  * @author davywalker
  */
 public class ShowTicket extends Item {
+    Item i;
 
     public ShowTicket(Item i) {
-        super(i);
+        super(i.name, i.sellIn, i.value);
+        this.i = i;
     }
 
     @Override
     public void updateValue() {
-        this.sellIn--;
+        this.i.sellIn--;
         if (outOfTenDays()) {
-            this.value += 1;
+            this.i.value += 1;
         } else if (inTenDays()) {
-            this.value += 2;
+            this.i.value += 2;
         } else if (inFiveDays()) {
-            this.value += 3;
+            this.i.value += 3;
         } else {
-            this.value = MIN_VALUE;
+            this.i.value = MIN_VALUE;
         }
-        formatValue();
+        i.formatValue();
     }
 
     /**
@@ -30,7 +32,7 @@ public class ShowTicket extends Item {
      * @return
      */
     public boolean outOfTenDays() {
-        return this.sellIn >= 10;
+        return this.i.sellIn >= 10;
     }
 
     /**
@@ -39,7 +41,7 @@ public class ShowTicket extends Item {
      * @return
      */
     public boolean inTenDays() {
-        return this.sellIn >= 5 && this.sellIn < 10;
+        return this.i.sellIn >= 5 && this.i.sellIn < 10;
     }
 
     /**
@@ -48,6 +50,6 @@ public class ShowTicket extends Item {
      * @return
      */
     public boolean inFiveDays() {
-        return this.sellIn >= 0 && this.sellIn < 5;
+        return this.i.sellIn >= 0 && this.i.sellIn < 5;
     }
 }

@@ -95,3 +95,16 @@ ShowTicket初始化时, 如果sellIn < 0, 则把初始价值修改为0
 Item初始化时, 进行formatValue, 强制<0的value, 将value置为0
 > 仍然是50分
 ```
+
+update 20211112: 
+```
+看了赛题解析, 终于知道问题出在哪里了!!
+根本不是代码逻辑问题, 而是因为结果的评测, 不是按照打印出来的数据进行的.
+而是根据传入的item对象, 评测完成之后.
+所以不能修改传入的Item对象!!!! 
+即不能new Sulfuras(Item i), 然后把sulfras.xxx = i.xxx 这种!!!
+这个真是个大BUG!!! 题目也不说清楚.
+```
+
+
+![img.png](img.png)
